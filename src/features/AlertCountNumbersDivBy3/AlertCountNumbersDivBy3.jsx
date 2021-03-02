@@ -2,11 +2,13 @@
 import React from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { getCountIntegersDivisebleBy3 } from '../../utils/index';
-import styles from './styles.module.scss';
 import Error from '../../components/Error/Error';
+import { getCountIntegersDivisebleBy3 } from '../../utils/index';
+import useAutofocus from './useAutofocus';
+import styles from './styles.module.scss';
 
 const AlertCountNumbersDivBy3 = () => {
+  const autoFocusRef = useAutofocus();
   const formik = useFormik({
     initialValues: {
       firstValue: '',
@@ -41,6 +43,7 @@ const AlertCountNumbersDivBy3 = () => {
       <label className={styles.label} htmlFor="firstValue">
         First Number
         <input
+          ref={autoFocusRef}
           className={styles.input}
           type="text"
           name="firstValue"
