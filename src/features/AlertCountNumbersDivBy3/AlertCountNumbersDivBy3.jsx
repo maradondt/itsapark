@@ -38,9 +38,10 @@ const AlertCountNumbersDivBy3 = () => {
 
   return (
     <form className={styles.form} onSubmit={formik.handleSubmit}>
-      <label htmlFor="firstValue">
+      <label className={styles.label} htmlFor="firstValue">
         First Number
         <input
+          className={styles.input}
           type="text"
           name="firstValue"
           id="firstValue"
@@ -49,9 +50,10 @@ const AlertCountNumbersDivBy3 = () => {
         />
       </label>
       {renderErrors('firstValue')}
-      <label htmlFor="secondValue">
+      <label className={styles.label} htmlFor="secondValue">
         Second Number
         <input
+          className={styles.input}
           type="text"
           name="secondValue"
           id="secondValue"
@@ -60,7 +62,7 @@ const AlertCountNumbersDivBy3 = () => {
         />
       </label>
       {renderErrors('secondValue')}
-      <button type="submit">Process</button>
+      <button className={styles.button} type="submit">Process</button>
     </form>
   );
 };
