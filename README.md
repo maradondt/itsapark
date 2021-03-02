@@ -1,3 +1,4 @@
+[![Node CI](https://github.com/maradondt/itsapark/actions/workflows/nodejs.yml/badge.svg)](https://github.com/maradondt/itsapark/actions/workflows/nodejs.yml)
 # FRONTEND CHALLENGE
 We would like you to create a simple React program that has the following functionality:
 1. Allows a user to input and submit two numbers.
