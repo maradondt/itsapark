@@ -3,6 +3,7 @@ import React from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { getCountIntegersDivisebleBy3 } from '../../utils/index';
+import styles from './styles.module.scss';
 
 const AlertCountNumbersDivBy3 = () => {
   const formik = useFormik({
@@ -16,10 +17,11 @@ const AlertCountNumbersDivBy3 = () => {
       secondValue: Yup.number('Must be a number')
         .required('Required'),
     }),
-    onSubmit: ({ firstValue, secondValue }) => {
+    onSubmit: ({ firstValue, secondValue }, { resetForm }) => {
       alert(getCountIntegersDivisebleBy3(
-        firstValue, secondValue,
+        +firstValue, +secondValue,
       ));
+      resetForm(firstValue, secondValue);
     },
   });
 
@@ -30,7 +32,7 @@ const AlertCountNumbersDivBy3 = () => {
   );
 
   return (
-    <form className={} onSubmit={formik.onSubmit}>
+    <form className={styles.form} onSubmit={formik.handleSubmit}>
       <label htmlFor="firstValue">
         First Number
         <input
@@ -43,6 +45,7 @@ const AlertCountNumbersDivBy3 = () => {
       </label>
       {renderErrors('firstValue')}
       <label htmlFor="secondValue">
+        Second Number
         <input
           type="text"
           name="secondValue"

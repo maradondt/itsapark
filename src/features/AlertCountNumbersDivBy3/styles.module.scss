@@ -1,6 +1,9 @@
-@import '../../scss/variables)';
+@import '../../scss/variables';
   
 .form {
+  display: flex;
+  flex-direction: column;
   margin: auto;
+
   color: $primary;
 }

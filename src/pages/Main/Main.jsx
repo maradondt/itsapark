@@ -1,13 +1,11 @@
 import React from 'react';
-import styles from './Main.modiles.scss';
+import AlertCountNumbersDivBy3 from '../../features/AlertCountNumbersDivBy3/AlertCountNumbersDivBy3';
+import styles from './styles.module.scss';
 
-const Main = () => {
-
-  return (<>
-    <h1>
-      Hi!
-    </h1>
-  </>);
-};
+const Main = () => (
+  <main className={styles.main}>
+    <AlertCountNumbersDivBy3 />
+  </main>
+);
 
 export default Main;
