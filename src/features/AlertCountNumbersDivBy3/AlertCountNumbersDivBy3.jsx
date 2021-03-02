@@ -4,6 +4,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { getCountIntegersDivisebleBy3 } from '../../utils/index';
 import styles from './styles.module.scss';
+import Error from '../../components/Error/Error';
 
 const AlertCountNumbersDivBy3 = () => {
   const formik = useFormik({
@@ -12,9 +13,13 @@ const AlertCountNumbersDivBy3 = () => {
       secondValue: '',
     },
     validationSchema: Yup.object({
-      firstValue: Yup.number('Must be a number')
+      firstValue: Yup.number()
+        .integer()
+        .typeError('Must be a number')
         .required('Required'),
-      secondValue: Yup.number('Must be a number')
+      secondValue: Yup.number()
+        .integer()
+        .typeError('Must be a number')
         .required('Required'),
     }),
     onSubmit: ({ firstValue, secondValue }, { resetForm }) => {
@@ -27,7 +32,7 @@ const AlertCountNumbersDivBy3 = () => {
 
   const renderErrors = (field) => (
     formik.touched[field] && formik.errors[field]
-      ? <div>{formik.errors[field]}</div>
+      ? <Error>{formik.errors[field]}</Error>
       : null
   );
 
