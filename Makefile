@@ -11,4 +11,4 @@ build:
 	npm run build
 
 test:
-	npx jest --colors
+	npm test
