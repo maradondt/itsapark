@@ -1,5 +1,6 @@
 /* eslint-disable no-alert */
 import React from 'react';
+import PropTypes from 'prop-types';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import Error from '../../components/Error/Error';
@@ -7,7 +8,7 @@ import { getCountIntegersDivisebleBy3 } from '../../utils/index';
 import useAutofocus from './useAutofocus';
 import styles from './styles.module.scss';
 
-const AlertCountNumbersDivBy3 = () => {
+const AlertCountNumbersDivBy3 = ({ alert }) => {
   const autoFocusRef = useAutofocus();
   const formik = useFormik({
     initialValues: {
@@ -50,6 +51,7 @@ const AlertCountNumbersDivBy3 = () => {
           id="firstValue"
           value={formik.values.firstValue}
           onChange={formik.handleChange}
+          data-testid="firstValue"
         />
       </label>
       {renderErrors('firstValue')}
@@ -62,12 +64,25 @@ const AlertCountNumbersDivBy3 = () => {
           id="secondValue"
           value={formik.values.secondValue}
           onChange={formik.handleChange}
+          data-testid="secondValue"
         />
       </label>
       {renderErrors('secondValue')}
-      <button className={styles.button} type="submit">Process</button>
+      <input
+        className={styles.button}
+        type="submit"
+        value="Process"
+      />
     </form>
   );
+};
+
+AlertCountNumbersDivBy3.defaultProps = {
+  alert,
+};
+
+AlertCountNumbersDivBy3.propTypes = {
+  alert: PropTypes.func,
 };
 
 export default AlertCountNumbersDivBy3;
