@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable no-alert */
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -41,8 +42,10 @@ const AlertCountNumbersDivBy3 = ({ alert }) => {
 
   return (
     <form className={styles.form} onSubmit={formik.handleSubmit}>
-      <label className={styles.label} htmlFor="firstValue">
-        First Number
+      <div className={styles.field}>
+        <label className={styles.label} htmlFor="firstValue">
+          First Number
+        </label>
         <input
           ref={autoFocusRef}
           className={styles.input}
@@ -53,10 +56,17 @@ const AlertCountNumbersDivBy3 = ({ alert }) => {
           onChange={formik.handleChange}
           data-testid="firstValue"
         />
-      </label>
-      {renderErrors('firstValue')}
-      <label className={styles.label} htmlFor="secondValue">
-        Second Number
+        <div className={styles.feedback}>
+          {renderErrors('firstValue')}
+        </div>
+      </div>
+      <div className={styles.field}>
+        <label
+          className={styles.label}
+          htmlFor="secondValue"
+        >
+          Second Number
+        </label>
         <input
           className={styles.input}
           type="text"
@@ -66,13 +76,11 @@ const AlertCountNumbersDivBy3 = ({ alert }) => {
           onChange={formik.handleChange}
           data-testid="secondValue"
         />
-      </label>
-      {renderErrors('secondValue')}
-      <input
-        className={styles.button}
-        type="submit"
-        value="Process"
-      />
+        <div className={styles.feedback}>
+          {renderErrors('secondValue')}
+        </div>
+      </div>
+      <input className={styles.button} type="submit" value="Process" />
     </form>
   );
 };
